@@ -17,7 +17,7 @@ class Notes:
     def __init__(self):
         self.notes = {}
 
-    def read_notes_csv(self, path):
+    def read_notes(self, path):
         with open(path, "r") as f:
             reader = csv.reader(f, delimiter=";")
             for row in reader:
@@ -53,7 +53,7 @@ class Notes:
         else:
             print("Note not found")
 
-    def save_notes_csv(self, path):
+    def save_notes(self, path):
         with open(path, "w") as f:
             writer = csv.writer(f, delimiter=";")
             for note_id in self.notes:
@@ -71,7 +71,7 @@ class Notes:
 if __name__ == "__main__":
     notes = Notes()
     path = "notes.csv"
-    notes.read_notes_csv(path)
+    notes.read_notes(path)
     print("The Notes app welcomes you! \nChoose an action.")
 
     while True:
@@ -94,6 +94,6 @@ if __name__ == "__main__":
         elif choice == "4":
             notes.delete_note()
         elif choice == "5":
-            notes.save_notes_csv(path)
+            notes.save_notes(path)
         elif choice == "6":
             break
