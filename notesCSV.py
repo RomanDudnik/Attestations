@@ -65,14 +65,24 @@ class Notes:
         for note_id in self.notes:
             note = self.notes[note_id]
             print(
+                # f"\n{note.id}\n{note.title}\n{note.body}\nCreated at: {note.created_at}\nUpdated at: {note.updated_at}\n")
                 f"\n{note.id}\n{note.title}\n{note.body}\nCreated at: {note.created_at}\nUpdated at: {note.updated_at}\n")
 
-
 if __name__ == "__main__":
+    # notes = Notes()
+    # path = "notes.csv"
+    # notes.read_notes(path)
+    # print("The Notes app welcomes you! \nChoose an action.")
+    
     notes = Notes()
     path = "notes.csv"
-    notes.read_notes(path)
-    print("The Notes app welcomes you! \nChoose an action.")
+    try:
+        notes.read_notes(path)
+    except IOError:
+        file = open(path, 'w')
+    finally:
+        notes.read_notes(path)
+        
 
     while True:
         print("Menu: ")
