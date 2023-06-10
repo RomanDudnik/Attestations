@@ -14,8 +14,8 @@ class Note:
 
 class Notes:
 
-    def __init__(self):
-        self.notes = {}
+    def __init__(self):         # Этот метод отвечает за инициализацию экземпляров класса после их создания
+        self.notes = {}                 # Инициализатор позволяет получить уже полностью настроенный экземпляр
 
     def read_notes(self, path):
         with open(path, "r") as f:
@@ -62,11 +62,13 @@ class Notes:
                                 note.created_at, note.updated_at])
 
     def print_notes(self):
+        num = 0
         for note_id in self.notes:
             note = self.notes[note_id]
+            num += 1
             print(
                 # f"\n{note.id}\n{note.title}\n{note.body}\nCreated at: {note.created_at}\nUpdated at: {note.updated_at}\n")
-                f"\n{note.id}\n{note.title}\n{note.body}\nCreated at: {note.created_at}\nUpdated at: {note.updated_at}\n")
+                f"\n{num}_Id:\n{note.id}\n{note.title}\n{note.body}\nCreated at: {note.created_at}\nUpdated at: {note.updated_at}\n")
 
 if __name__ == "__main__":
     # notes = Notes()
@@ -83,6 +85,7 @@ if __name__ == "__main__":
     finally:
         notes.read_notes(path)
         
+    print("\nThe Notes app welcomes you! \nChoose an action.")    
 
     while True:
         print("Menu: ")
